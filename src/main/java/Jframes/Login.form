@@ -6,9 +6,6 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1186, 621]"/>
-    </Property>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1186, 621]"/>
     </Property>
@@ -45,7 +42,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="com.mycompany.electricbillgen.Extras.PanelBorder" name="panelBorder1">
+    <Container class="Components.PanelBorder" name="panelBorder1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -90,7 +87,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="com.mycompany.electricbillgen.Extras.PanelBorder" name="panelBorder2">
+        <Container class="Components.PanelBorder" name="panelBorder2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -130,7 +127,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="com.mycompany.electricbillgen.Extras.PanelBorder" name="panelBorder5">
+        <Container class="Components.PanelBorder" name="panelBorder5">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -288,7 +285,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="com.mycompany.electricbillgen.Extras.PanelBorder" name="panelBorder3">
+        <Container class="Components.PanelBorder" name="panelBorder3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

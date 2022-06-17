@@ -1,6 +1,6 @@
 
-package com.mycompany.electricbillgen;
-import com.mycompany.electricbillgen.Create2;
+package Jframes;
+import Jframes.Create2;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -68,11 +68,11 @@ jLabel10.setEnabled(false);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBorder1 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder1 = new Components.PanelBorder();
         jButton1 = new javax.swing.JButton();
-        panelBorder3 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder3 = new Components.PanelBorder();
         jLabel5 = new javax.swing.JLabel();
-        panelBorder2 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder2 = new Components.PanelBorder();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -89,9 +89,7 @@ jLabel10.setEnabled(false);
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1186, 621));
         setMinimumSize(new java.awt.Dimension(1186, 621));
-        setPreferredSize(new java.awt.Dimension(1186, 621));
         setSize(new java.awt.Dimension(1186, 621));
 
         panelBorder1.setForeground(new java.awt.Color(204, 204, 204));
@@ -212,7 +210,6 @@ jLabel10.setEnabled(false);
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("G:\\Java\\New Folder\\ElectricBillGen\\src\\main\\java\\Icons\\button(6).png")); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -528,8 +525,8 @@ new Create2(passedName).setVisible(true);
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder1;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder2;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder3;
+    private Components.PanelBorder panelBorder1;
+    private Components.PanelBorder panelBorder2;
+    private Components.PanelBorder panelBorder3;
     // End of variables declaration//GEN-END:variables
 }

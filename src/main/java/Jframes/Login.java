@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.electricbillgen;
+package Jframes;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -39,10 +39,10 @@ this.setVisible(true);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBorder1 = new com.mycompany.electricbillgen.Extras.PanelBorder();
-        panelBorder2 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder1 = new Components.PanelBorder();
+        panelBorder2 = new Components.PanelBorder();
         jLabel2 = new javax.swing.JLabel();
-        panelBorder5 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder5 = new Components.PanelBorder();
         jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -51,12 +51,11 @@ this.setVisible(true);
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        panelBorder3 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder3 = new Components.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(1186, 621));
         setSize(new java.awt.Dimension(1186, 621));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 204));
@@ -370,9 +369,9 @@ new Create1().setVisible(true);
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField2;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder1;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder2;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder3;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder5;
+    private Components.PanelBorder panelBorder1;
+    private Components.PanelBorder panelBorder2;
+    private Components.PanelBorder panelBorder3;
+    private Components.PanelBorder panelBorder5;
     // End of variables declaration//GEN-END:variables
 }

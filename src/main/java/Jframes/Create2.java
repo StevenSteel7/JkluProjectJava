@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.electricbillgen;
+package Jframes;
 
-import com.mycompany.electricbillgen.Create1;
+import Jframes.Create1;
 
 
 /**
@@ -45,8 +45,8 @@ public class Create2 extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        panelBorder1 = new com.mycompany.electricbillgen.Extras.PanelBorder();
-        panelBorder2 = new com.mycompany.electricbillgen.Extras.PanelBorder();
+        panelBorder1 = new Components.PanelBorder();
+        panelBorder2 = new Components.PanelBorder();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(187, 187, 187));
@@ -56,6 +56,11 @@ public class Create2 extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
             }
         });
 
@@ -227,6 +232,10 @@ public class Create2 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -273,7 +282,7 @@ public class Create2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder1;
-    private com.mycompany.electricbillgen.Extras.PanelBorder panelBorder2;
+    private Components.PanelBorder panelBorder1;
+    private Components.PanelBorder panelBorder2;
     // End of variables declaration//GEN-END:variables
 }

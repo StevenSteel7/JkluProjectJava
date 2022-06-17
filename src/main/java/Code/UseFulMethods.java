@@ -4,7 +4,7 @@
  */
 package Code;
 
-import com.mycompany.electricbillgen.LoginPage;
+import Jframes.LoginPage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
