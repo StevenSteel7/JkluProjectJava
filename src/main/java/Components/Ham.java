@@ -4,22 +4,17 @@
  */
 package Components;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
 /**
  *
  * @author soggs
  */
-public class PanelBorder extends javax.swing.JPanel {
+public class Ham extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelBorder
+     * Creates new form Ham
      */
-    public PanelBorder() {
+    public Ham() {
         initComponents();
-        setOpaque(false);
     }
 
     /**
@@ -31,31 +26,27 @@ public class PanelBorder extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("G:\\Java\\New Folder\\ElectricBillGen\\src\\main\\java\\Icons\\ham.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-   public void paintComponent(Graphics g)
-{
-   
-    Graphics2D g2= (Graphics2D) g;
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
-    g2.setColor(getBackground());
-    g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
-    super.paintComponent(g);
 
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
