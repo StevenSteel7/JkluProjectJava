@@ -517,7 +517,6 @@ String phone = phoneNo.getText();
         if(OTPverification == OTP) {
             System.out.print("Worked");
             check=1;
-            
         }
         else {
         System.out.print(OTPverification);
