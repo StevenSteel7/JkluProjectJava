@@ -1,5 +1,6 @@
 
 package Jframes;
+import Code.API;
 import Jframes.Create2;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,9 +20,16 @@ import java.util.logging.Logger;
  * @author soggs
  */
 public class Create1 extends javax.swing.JFrame {
+    Random rand = new Random();
+    int OTP = rand.nextInt(999999);
     
     public Create1() {
         initComponents();
+        OTPCode.setVisible(false);
+        Send_Code.setVisible(true);
+        VerifyEmail.setVisible(false);
+        VerifyDOne.setVisible(false);
+        next.setVisible(false);
         Toolkit toolkit = getToolkit()  ;
 Dimension size = toolkit.getScreenSize();
 setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
@@ -30,6 +39,7 @@ this.setUndecorated(true); // to set the jframe tranparent
 this.setBackground(new Color(0, 0, 0, 0));
 this.setVisible(true);
 next.setEnabled(false);
+
 
 
 
@@ -93,6 +103,10 @@ next.setEnabled(false);
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         address = new javax.swing.JTextField();
+        VerifyEmail = new javax.swing.JLabel();
+        Send_Code = new javax.swing.JLabel();
+        OTPCode = new javax.swing.JTextField();
+        VerifyDOne = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1186, 621));
@@ -244,6 +258,42 @@ next.setEnabled(false);
             }
         });
 
+        VerifyEmail.setIcon(new javax.swing.ImageIcon("G:\\JkluProjectJava\\src\\main\\java\\Icons\\verifyEmail.png")); // NOI18N
+        VerifyEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VerifyEmailMouseClicked(evt);
+            }
+        });
+
+        Send_Code.setIcon(new javax.swing.ImageIcon("G:\\JkluProjectJava\\src\\main\\java\\Icons\\send_code.png")); // NOI18N
+        Send_Code.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Send_CodeMouseClicked(evt);
+            }
+        });
+
+        OTPCode.setText("Code");
+        OTPCode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OTPCodeMouseClicked(evt);
+            }
+        });
+        OTPCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OTPCodeActionPerformed(evt);
+            }
+        });
+        OTPCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                OTPCodeKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                OTPCodeKeyTyped(evt);
+            }
+        });
+
+        VerifyDOne.setText("jLabel3");
+
         javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
         panelBorder2.setLayout(panelBorder2Layout);
         panelBorder2Layout.setHorizontalGroup(
@@ -260,30 +310,47 @@ next.setEnabled(false);
                 .addGap(99, 99, 99)
                 .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBorder2Layout.createSequentialGroup()
-                        .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelBorder2Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(258, 258, 258))
-                    .addGroup(panelBorder2Layout.createSequentialGroup()
                         .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelBorder2Layout.createSequentialGroup()
-                        .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelBorder2Layout.createSequentialGroup()
+                                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(51, 51, 51))
+                            .addGroup(panelBorder2Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(OTPCode, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(VerifyDOne)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBorder2Layout.createSequentialGroup()
+                                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passwordInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelBorder2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(258, 258, 258))
+                            .addGroup(panelBorder2Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(VerifyEmail)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(panelBorder2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder2Layout.createSequentialGroup()
+                    .addContainerGap(667, Short.MAX_VALUE)
+                    .addComponent(Send_Code)
+                    .addGap(277, 277, 277)))
         );
         panelBorder2Layout.setVerticalGroup(
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +373,7 @@ next.setEnabled(false);
                                 .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)))
                         .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
+                        .addGap(28, 28, 28)
                         .addComponent(passwordInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
                         .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -316,22 +383,37 @@ next.setEnabled(false);
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelBorder2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelBorder2Layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addComponent(jLabel8))
-                            .addGroup(panelBorder2Layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
+                                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(panelBorder2Layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(103, 103, 103))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(OTPCode, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(VerifyDOne))
+                                        .addGap(63, 63, 63)))
                                 .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelBorder2Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(VerifyEmail)
+                                .addGap(91, 91, 91)
+                                .addComponent(jLabel8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)))
                 .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
+            .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBorder2Layout.createSequentialGroup()
+                    .addGap(229, 229, 229)
+                    .addComponent(Send_Code)
+                    .addContainerGap(284, Short.MAX_VALUE)))
         );
 
         panelBorder1.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 51, -1, -1));
@@ -342,7 +424,7 @@ next.setEnabled(false);
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, 1170, Short.MAX_VALUE)
+                .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, 1173, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
@@ -518,6 +600,53 @@ new CreateFinal(nme,usernme,pass,addres).setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_addressActionPerformed
 
+    private void OTPCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OTPCodeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OTPCodeMouseClicked
+
+    private void OTPCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OTPCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OTPCodeActionPerformed
+
+    private void OTPCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OTPCodeKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OTPCodeKeyReleased
+
+    private void OTPCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OTPCodeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OTPCodeKeyTyped
+
+    private void Send_CodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Send_CodeMouseClicked
+                 try {
+            String recipent = Username.getText();
+            String subject = "Please Verify your Account";
+            String text= "Your OTP is " + OTP;
+            API.sendMail(recipent, subject, text);
+            VerifyEmail.setVisible(true);
+            OTPCode.setVisible(true);
+            Send_Code.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(Create1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Send_CodeMouseClicked
+
+    private void VerifyEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerifyEmailMouseClicked
+                int OTPverification = Integer.parseInt(OTPCode.getText());
+        if(OTPverification == OTP) {
+            jLabel10.setVisible(true);
+            System.out.print("Worked");
+            VerifyEmail.setVisible(false);
+            OTPCode.setVisible(false);
+            VerifyDOne.setText("Verified");
+            VerifyDOne.setVisible(true);
+            next.setVisible(true);
+        }
+        else {
+        System.out.print(OTPverification);
+        System.out.print(OTP);
+        }
+    }//GEN-LAST:event_VerifyEmailMouseClicked
+
   
     
     
@@ -532,8 +661,12 @@ new CreateFinal(nme,usernme,pass,addres).setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Name;
+    private javax.swing.JTextField OTPCode;
     private javax.swing.JPasswordField Pass;
+    private javax.swing.JLabel Send_Code;
     private javax.swing.JTextField Username;
+    private javax.swing.JLabel VerifyDOne;
+    private javax.swing.JLabel VerifyEmail;
     private javax.swing.JTextField address;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

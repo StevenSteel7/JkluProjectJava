@@ -4,6 +4,7 @@
  */
 package Jframes;
 
+import Code.API;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,6 +20,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
@@ -32,11 +34,16 @@ import javax.swing.JComboBox;
 
 
 public class CreateFinal extends javax.swing.JFrame {
-
+    Random rand = new Random();
+    int OTP = rand.nextInt(999999);
+    int check;
 
 
     protected CreateFinal() {
      initComponents();
+     Verify_Code.setVisible(false);
+     verify.setVisible(false);
+     Send_sms_Code.setVisible(true);
         Toolkit toolkit = getToolkit()  ;
 Dimension size = toolkit.getScreenSize();
 setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
@@ -80,10 +87,12 @@ this.setVisible(true);
         gender = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        verify = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         ConnectionType = new javax.swing.JComboBox<>();
+        verify = new javax.swing.JLabel();
+        Verify_Code = new javax.swing.JTextField();
         backToLogin = new javax.swing.JLabel();
+        Send_sms_Code = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1186, 621));
@@ -192,8 +201,19 @@ this.setVisible(true);
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Enter Your D.O.B.");
 
-        verify.setIcon(new javax.swing.ImageIcon("G:\\Java\\New Folder\\ElectricBillGen\\src\\main\\java\\Icons\\Verify_def.png")); // NOI18N
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Connection type");
+
+        ConnectionType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ConnectionType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accha ", "Bura", "thiek thiek" }));
+
+        verify.setIcon(new javax.swing.ImageIcon("G:\\JkluProjectJava\\src\\main\\java\\Icons\\Verify.png")); // NOI18N
         verify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verifyMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 verifyMouseEntered(evt);
             }
@@ -202,13 +222,12 @@ this.setVisible(true);
             }
         });
 
-        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Connection type");
-
-        ConnectionType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ConnectionType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accha ", "Bura", "thiek thiek" }));
+        Verify_Code.setText("Code");
+        Verify_Code.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Verify_CodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBorder4Layout = new javax.swing.GroupLayout(panelBorder4);
         panelBorder4.setLayout(panelBorder4Layout);
@@ -239,9 +258,17 @@ this.setVisible(true);
                             .addGap(18, 18, 18)
                             .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(phoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
-                    .addComponent(verify, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ConnectionType, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelBorder4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder4Layout.createSequentialGroup()
+                        .addComponent(verify, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder4Layout.createSequentialGroup()
+                        .addComponent(Verify_Code, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73))))
         );
         panelBorder4Layout.setVerticalGroup(
             panelBorder4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,15 +292,25 @@ this.setVisible(true);
                 .addGroup(panelBorder4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(Verify_Code, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(verify, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        backToLogin.setIcon(new javax.swing.ImageIcon("G:\\Java\\New Folder\\ElectricBillGen\\src\\main\\java\\Icons\\BackToLogin.png")); // NOI18N
+        backToLogin.setIcon(new javax.swing.ImageIcon("G:\\JkluProjectJava\\src\\main\\java\\Icons\\BackToLogin.png")); // NOI18N
         backToLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backToLoginMouseClicked(evt);
+            }
+        });
+
+        Send_sms_Code.setIcon(new javax.swing.ImageIcon("G:\\JkluProjectJava\\src\\main\\java\\Icons\\send_code.png")); // NOI18N
+        Send_sms_Code.setText("jButton1");
+        Send_sms_Code.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Send_sms_CodeMouseClicked(evt);
             }
         });
 
@@ -285,17 +322,24 @@ this.setVisible(true);
                 .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBorder2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(panelBorder4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelBorder4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Send_sms_Code, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelBorder2Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(backToLogin)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         panelBorder2Layout.setVerticalGroup(
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(panelBorder4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBorder2Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(panelBorder4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBorder2Layout.createSequentialGroup()
+                        .addGap(284, 284, 284)
+                        .addComponent(Send_sms_Code, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(backToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -326,7 +370,7 @@ this.setVisible(true);
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,6 +498,37 @@ String phone = phoneNo.getText();
         // TODO add your handling code here:
     }//GEN-LAST:event_backToLoginMouseClicked
 
+    private void Send_sms_CodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Send_sms_CodeMouseClicked
+        try {
+            String recipent = phoneNo.getText();
+            String FinalNumber = "+91" + recipent;
+            String text= "Hello There, Your OTP is " + OTP;
+            API.SendSMS(FinalNumber, text);
+            Verify_Code.setVisible(true);
+            verify.setVisible(true);
+            Send_sms_Code.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(Create1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Send_sms_CodeMouseClicked
+
+    private void verifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verifyMouseClicked
+        int OTPverification = Integer.parseInt(Verify_Code.getText());
+        if(OTPverification == OTP) {
+            System.out.print("Worked");
+            check=1;
+            
+        }
+        else {
+        System.out.print(OTPverification);
+        System.out.print(OTP);
+        }
+    }//GEN-LAST:event_verifyMouseClicked
+
+    private void Verify_CodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Verify_CodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Verify_CodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -496,6 +571,8 @@ String phone = phoneNo.getText();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Close;
     private javax.swing.JComboBox<String> ConnectionType;
+    private javax.swing.JButton Send_sms_Code;
+    private javax.swing.JTextField Verify_Code;
     private javax.swing.JLabel backToLogin;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JComboBox<String> gender;
