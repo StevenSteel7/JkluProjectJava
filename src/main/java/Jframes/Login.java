@@ -62,7 +62,6 @@ this.setVisible(true);
         panelBorder1.setForeground(new java.awt.Color(204, 204, 204));
         panelBorder1.setToolTipText("");
 
-        panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("G:\\Java\\New Folder\\ElectricBillGen\\src\\main\\java\\Icons\\Secure login 480x480.png")); // NOI18N
@@ -84,7 +83,6 @@ this.setVisible(true);
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        panelBorder5.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder5.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
@@ -197,9 +195,6 @@ this.setVisible(true);
                 .addGap(26, 26, 26))
         );
 
-        panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder3.setForeground(new java.awt.Color(255, 255, 255));
-
         jLabel1.setIcon(new javax.swing.ImageIcon("G:\\Java\\New Folder\\ElectricBillGen\\src\\main\\java\\Icons\\close_def.png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,7 +249,7 @@ this.setVisible(true);
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelBorder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelBorder5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,7 +262,9 @@ this.setVisible(true);
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
