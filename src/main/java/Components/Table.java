@@ -4,7 +4,6 @@
  */
 package Components;
 
-import com.itextpdf.layout.element.Cell;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
